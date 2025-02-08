@@ -7,7 +7,11 @@ const sendemail = require('./routes/send');
 
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({
+    origin: "*",  // Allow all origins
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type"
+}));
 app.use(express.json());
 
 app.use('/api/v1', sendemail);
